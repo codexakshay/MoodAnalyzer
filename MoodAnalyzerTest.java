@@ -1,31 +1,27 @@
 package com.bridgelabz.code;
-
 import static org.junit.Assert.*;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+
 import org.junit.Test;
 
 public class MoodAnalyzerTest {
 
 	static MoodAnalyzer mood;
 
-	@BeforeClass
-	public static void createMoodAnalyserObj() {
-		mood = new MoodAnalyzer();
-	}
-
-	@AfterClass
-	public static void nullObj() {
-		mood = null;
-	}
-
 	@Test
 	public void testAnalyzeAbilityMethod_thenAssertionHappy() {
-		assertEquals("HAPPY", mood.analyzeability("I am in Happy Mood"));
+		mood = new MoodAnalyzer("I am in Happy Mood");
+		assertEquals("HAPPY", mood.analyzeability());
 	}
 
 	@Test
 	public void testAnalyzeAbilityMethod_thenAssertionSad() {
-		assertEquals("SAD", mood.analyzeability("I am in Sad Mood"));
+		mood = new MoodAnalyzer("I am in Sad Mood");
+		assertEquals("SAD", mood.analyzeability());
+	}
+	
+	@Test
+	public void testgivenNullMoodShouldReturnHappy_thenAssertionHappy() {
+		mood = new MoodAnalyzer();
+		assertEquals("HAPPY", mood.analyzeability());
 	}
 }
